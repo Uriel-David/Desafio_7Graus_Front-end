@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      axios.get('https://randomuser.me/api/?results=20')
+      axios.get('https://randomuser.me/api/?results=2000')
         .then((response) => {
           setUserData(response.data.results);
         }).catch((error) => {
@@ -49,16 +49,14 @@ function App() {
             {userData.map((user: any, index: number) => {
               for(index; index < limitUsers; index++) {
                 return(
-                  <Fragment key={index}>
-                    <UsersProfileComponent>
-                      <img src={user.picture.large} alt="img-profile"></img>
-                      <span>Name: {user.name.first}, {user.name.last}</span>
-                      <span>&nbsp;|&nbsp;</span>
-                      <span>Age: {user.dob.age}</span>
-                      <span>Email: {user.email}</span>
-                      <span>Phone: {user.phone}</span>
-                    </UsersProfileComponent>
-                  </Fragment>
+                  <UsersProfileComponent key={index}>
+                    <img src={user.picture.large} alt="img-profile"></img>
+                    <span>Name: {user.name.first}, {user.name.last}</span>
+                    <span>&nbsp;|&nbsp;</span>
+                    <span>Age: {user.dob.age}</span>
+                    <span>Email: {user.email}</span>
+                    <span>Phone: {user.phone}</span>
+                  </UsersProfileComponent>
                 );
               }
               return <></>;
