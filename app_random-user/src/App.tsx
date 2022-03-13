@@ -41,7 +41,9 @@ function App() {
   return(
     <div className="App">
         {loading ? (
-          <h1>Loading...</h1>
+          <div id='loading-page'>
+            <h1>Loading...</h1>
+          </div>
         ):(
           <UsersWrappreComponent>
             {userData.map((user: any, index: number) => {
