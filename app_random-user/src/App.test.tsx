@@ -1,8 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import ButtonComponent from './components/ButtonComponent';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('ButtonComponent', () => {
+  test('check if the component exist', () => {
+    render(<ButtonComponent />);
+    const linkElement = screen.getByText(/Get more 10 Users/i || /There are no more Users/i);
+    expect(linkElement).toBeInTheDocument();
+  });
+});
+
+describe('onClickHandler', () => {
+  test('check if the function adds +10 to the state', () => {
+    render(<App />);
+  });
 });

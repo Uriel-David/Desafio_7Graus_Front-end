@@ -1,9 +1,9 @@
-import './buttonComponent.css'
+import './ButtonComponent.css'
 
-const Button = ({clicked}: any): JSX.Element => {
+const ButtonComponent = ({isChangeText, clicked}: any): JSX.Element => {
     return(
-        <button onClick={clicked}>Get more 10 User's</button>
+        <button onClick={clicked} className='get-button efeito'>{isChangeText ? 'There are no more Users' : 'Get more 10 Users'}</button>
     );
-}
+};
 
-export default Button;
+export default ButtonComponent;
