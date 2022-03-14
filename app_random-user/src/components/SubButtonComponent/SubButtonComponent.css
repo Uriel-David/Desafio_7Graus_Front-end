@@ -1,11 +1,11 @@
 .get-button {
     margin: 12px auto;
     color: white;
-    background-color: #28348a;
+    background-color: #a32233;
     padding: 10px;
     font-size: 18px;
     border-radius: 10px;
-    line-height: 24px;
+    line-height: 20px;
     cursor: pointer;
 }
 
@@ -22,7 +22,7 @@
     top: 0px;
     left: 0px;
     width: 0px;
-    height: 64px;
+    height: 100%;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     transition: all 0.5s ease;

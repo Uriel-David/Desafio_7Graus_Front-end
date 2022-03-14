@@ -1,15 +1,17 @@
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './App.css';
-import ButtonComponent from './components/ButtonComponent';
+import AddButtonComponent from './components/AddButtonComponent';
 import UsersWrappreComponent from './components/UsersWrappreComponent';
 import UsersProfileComponent from './components/UsersProfileComponent';
+import SubButtonComponent from './components/SubButtonComponent';
 
 function App() {
 
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [verifyButtonText, setVerifyButtonText] = useState(false);
+  const [subVerifyButtonText, setSubVerifyButtonText] = useState(false);
+  const [addVerifyButtonText, setAddVerifyButtonText] = useState(false);
   const [limitUsers, setLimitUsers] = useState(10);
 
   useEffect(() => {
@@ -27,13 +29,25 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onClickHandler = () => {
+  const onClickHandlerAdd = () => {
     setTimeout(() => {
         if(limitUsers >= userData.length) {
           setLimitUsers(userData.length);
-          setVerifyButtonText(true);
+          setAddVerifyButtonText(true);
         } else {
+          setSubVerifyButtonText(true);
           setLimitUsers(limitUsers + 10);
+        }
+    }, 2000);
+  }
+
+  const onClickHandlerSub = () => {
+    setTimeout(() => {
+        if(limitUsers == 10) {
+          setSubVerifyButtonText(false);
+        } else {
+          setSubVerifyButtonText(true);
+          setLimitUsers(limitUsers - 10);
         }
     }, 2000);
   }
@@ -64,7 +78,9 @@ function App() {
           </UsersWrappreComponent>
         )}
       <div className='buttons-icons-content'>
-        <ButtonComponent isChangeText={verifyButtonText} clicked={onClickHandler} />
+        <AddButtonComponent isChangeText={addVerifyButtonText} clicked={onClickHandlerAdd} />
+        <span>&nbsp;|&nbsp;</span>
+        <SubButtonComponent isChangeText={subVerifyButtonText} clicked={onClickHandlerSub} />
       </div>
     </div>
   );
